@@ -1,0 +1,217 @@
+###############################################################
+
+Install jenkins
+=============
+
+1 Download and install orcaljava8
+
+  sudo add-apt-repository ppa:webupd8team/java
+  sudo apt-get update
+  sudo apt-get install oracle-java8-installer
+
+2 Download jenkins.war file
+  
+  wget http://mirrors.jenkins.io/war-stable
+                                 /latest/jenkins.war
+
+3 Install git and maven
+  
+  sudo apt-get install -y git maven
+
+4 To start jenkins
+   java -jar jenkins.war
+
+
+Setup QA server and prodserver
+================================
+1 Login into the qaserver terminal
+
+2Update the apt repository
+  sudo apt-get update
+
+3 Install tomcat7
+  sudo apt-get install -y tomcat7
+
+4 Install tomcat7-admin
+  sudo apt-get install -y tomcat7-admin
+
+5 Edit tomcat-user.xml file
+  cd /etc/tomcat7
+  sudo vim tomcat-user.xml
+  Go into insert mode by presing i
+  enter the below statement
+  <user username="admin" password="admin" 
+                             roles="manager-script/>
+
+  Save and quit(Esc :wq)
+
+6 Restart tomcat7
+  sudo service tomcat7 restart
+
+  Repeat the same navigations on the prodserver
+
+
+Setting the path of jdk,git and maven in Jenkins
+==================================================
+1 Open the dashboard of jenkins
+  Launch any browser
+  ipaddress-of-linuxserver-where-jenkins-
+                                 is-installed:8080
+
+2 Click on manage jenkins
+
+3 Click on Global tool configurations
+
+4 Go to JDK--->click on jdk installations
+
+5 Give some name to java(myjava)
+
+6 Uncheck Install java automatically
+
+7 Enter path of JAVA_HOME
+  To find this path
+  Open the linux terminal where jenkins is installed
+  which java
+  
+  readlink -f oputput-of above command
+  Eg:
+   readlink -f /usr/bin/java
+
+8 Copy the path before bin folder and paste in Jenkins
+  JAVA_HOME location
+
+
+9 Go to GIT
+
+10 enter some name for git(mygit)
+
+11 To find the path of git executable
+   Go to the linux terminal where jenkins is installed
+    which git
+
+12 Copy the output paste in jenkins,Git location
+
+14 Go to MavenSection--->click on maven installations
+
+15 Enter some name for maven(mymaven)
+
+16 Uncheck install maven automatically
+
+17 Enter MAVEN_HOME
+   To find this path
+   Go to the linux terminal where jenkins is installed
+   which mvn
+   readlink -f output-of-above-command
+   Eg:
+   readlink -f /usr/bin/mvn
+
+18 Copy the path before bin folder
+
+19 Paste the path in MAVEN_HOME settings
+
+20 click on apply--->save
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
