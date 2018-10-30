@@ -1,0 +1,52 @@
+- name: Create a data container
+  docker_container:
+    name: mydata
+    image: busybox
+    tty: yes
+    volumes:
+      - /data
+
+################################################3
+- name: Stop a container
+  docker_container:
+    name: mycontainer
+    state: stopped
+
+#######################################################
+- name: remove container
+  docker_container:
+    name: ohno
+    state: absent
+
+##########################################################
+
+
+
+333##3###########################################33333
+- name: Docker
+  hosts: all
+  tasks:
+   - name: Create a 4 load balancing container
+     docker_container:
+      name: "container{{item}}"
+      image: tomcat
+     with_sequence: count=4
+
+
+##########################################################3
+- name: pull an image
+  docker_image:
+    name: pacur/centos-7
+
+- name: Log into DockerHub
+  docker_login:
+    username: docker
+    password: rekcod
+    email: intelliqit@gmail.com
+
+- name: Tag and push to docker hub
+  docker_image:
+    name: pacur/centos-7
+    repository: dcoppenhagan/myimage
+    tag: 7.0
+    push: yes
